@@ -21,7 +21,7 @@ public class UserInterface {
 
         while(running) {
 
-            System.out.println("Welcome to measurement converter!\nPlease choose your option:");
+            System.out.println("\nWelcome to measurement converter!\nPlease choose your option:");
             System.out.println("1 - Convert metric to imperial");
             System.out.println("2 - Convert imperial to metric");
             System.out.println("0 - Exit");
@@ -42,31 +42,56 @@ public class UserInterface {
 
                     switch (userInput) {
                         case "1":
-                            System.out.println("Input length to convert:\n");
+                            System.out.println("1 - Convert [m] to [ft]");
+                            System.out.println("2 - Convert [cm] to [in]");
                             userInput = readUserInput();
-                            System.out.println(converter.convertLength(Integer.parseInt(userInput)));
-                            continue;
+
+                            switch (userInput) {
+                                case "1":
+                                    System.out.println("Enter length in [m]:");
+                                    userInput = readUserInput();
+                                    System.out.println(userInput + "[m] is: " +
+                                            converter.convertMeterFoot(userInput) + "[ft]");
+                                    continue;
+
+                                case "2":
+                                    System.out.println("Enter length in [cm]:");
+                                    userInput = readUserInput();
+                                    System.out.println(converter.convertCentimeterInch(userInput));
+                                    continue;
+
+                                default:
+                                    System.out.println("Sorry, wrong option. Please try again.");
+                                    continue;
+                            }
+
                         case "2":
-                            System.out.println("Input volume to convert:\n");
+                            System.out.println("Input volume in [l]");
                             userInput = readUserInput();
-                            System.out.println(converter.convertLength(Integer.parseInt(userInput)));
+                            System.out.println(userInput + "[l] is: " +
+                                    converter.convertLiterGallon(userInput) + "[gal]");
                             continue;
                         case "3":
-                            System.out.println("Input volume to convert:\n");
+                            System.out.println("Input weight to convert:\n");
                             userInput = readUserInput();
-                            System.out.println(converter.convertLength(Integer.parseInt(userInput)));
+                            System.out.println(userInput + "[kg] is: " +
+                                    converter.convertKilogramPound(userInput) + "[lb]");
                             continue;
                         case "4":
-                            System.out.println("Input volume to convert:\n");
+                            System.out.println("Input temperature to convert:\n");
                             userInput = readUserInput();
-                            System.out.println(converter.convertLength(Integer.parseInt(userInput)));
+                            System.out.println(userInput + "[C] is: " +
+                                    converter.convertCelsiusFahrenheit(userInput) + "[F]");
                             continue;
                         case "0":
                             continue;
+                        default:
+                            System.out.println("Sorry, wrong option. Please try again.");
+                            continue;
+
 
                     }
 
-                    continue;
 
                 case "2":
                     converter = new ImperialToMetricConverter();
