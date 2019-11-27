@@ -2,6 +2,7 @@ package com.connectis.converter;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import org.apache.commons.lang3.StringUtils;
 
 public abstract class Converter {
 
@@ -10,6 +11,10 @@ public abstract class Converter {
     private final BigDecimal VOLUME_LITER_GALLON_FACTOR;
     private final BigDecimal WEIGHT_KILOGRAM_POUND_FACTOR ;
     private final BigDecimal TEMP_CELSIUS_FAHRENHEIT_FACTOR;
+
+
+    public static final String SUCCESSFULLY_CONVERTED_MESSAGE = "Converted value is: ";
+    private static final String ENTER_NUMBER_INSTEAD = "Please enter a number instead";
 
     public Converter(double LENGTH_METER_FOOT_FACTOR,
                      double LENGTH_CENTIMETER_INCH_FACTOR,
@@ -26,50 +31,49 @@ public abstract class Converter {
 
     }
 
-    //TODO
-    //metry, centymetry, co z liczbami z poza zakresu?
-    //jaki jest typ inputu?
-    //czy user moze podawac jednostke w input "1m", "1cm" ?
+    public String convertMeterFoot(String input) {
+        if (!StringUtils.isNumeric(input)) {
+            return ENTER_NUMBER_INSTEAD;
+        }
 
-//    public double convertLength(String input) {
-//
-//        int value = 0;
-//
-////        if (input.endsWith("m")) {
-////            value =  Integer.parseInt(input.substring(0, input.indexOf("m")));
-////        }
-////
-////        if (input.endsWith("cm")) {
-////            value = Integer.parseInt(input.substring(0, input.indexOf("cm")));
-////        }
-//
-//        return value * LENGTH_METER_FOOT_FACTOR;
-//    }
-
-//    public double convertMeterFoot(String input) {
-//        Double d = Double.parseDouble(input);
-//        return Double.parseDouble(String.format("%.3f", d)) * LENGTH_METER_FOOT_FACTOR;
-//    }
-
-    public BigDecimal convertMeterFoot(String input) {
-        return new BigDecimal(input).multiply(LENGTH_METER_FOOT_FACTOR);
+            return SUCCESSFULLY_CONVERTED_MESSAGE +
+                    new BigDecimal(input).multiply(LENGTH_METER_FOOT_FACTOR).toString();
     }
 
-    public BigDecimal convertCentimeterInch(String input) {
-        return new BigDecimal(input).multiply(LENGTH_CENTIMETER_INCH_FACTOR);
+    public String convertCentimeterInch(String input) {
+        if (!StringUtils.isNumeric(input)) {
+            return ENTER_NUMBER_INSTEAD;
+        }
+
+        return SUCCESSFULLY_CONVERTED_MESSAGE +
+                new BigDecimal(input).multiply(LENGTH_CENTIMETER_INCH_FACTOR).toString();
     }
 
-    public BigDecimal convertLiterGallon(String input) {
-        return new BigDecimal(input).multiply(VOLUME_LITER_GALLON_FACTOR);
+    public String convertLiterGallon(String input) {
+        if (!StringUtils.isNumeric(input)) {
+            return ENTER_NUMBER_INSTEAD;
+        }
+
+        return SUCCESSFULLY_CONVERTED_MESSAGE +
+                new BigDecimal(input).multiply(VOLUME_LITER_GALLON_FACTOR).toString();
     }
 
-    public BigDecimal convertKilogramPound(String input) {
-        return new BigDecimal(input).multiply(WEIGHT_KILOGRAM_POUND_FACTOR);
+    public String convertKilogramPound(String input) {
+        if (!StringUtils.isNumeric(input)) {
+            return ENTER_NUMBER_INSTEAD;
+        }
+
+        return SUCCESSFULLY_CONVERTED_MESSAGE +
+                new BigDecimal(input).multiply(WEIGHT_KILOGRAM_POUND_FACTOR).toString();
     }
 
-    public BigDecimal convertCelsiusFahrenheit(String input) {
-        return new BigDecimal(input).multiply(TEMP_CELSIUS_FAHRENHEIT_FACTOR);
-    }
+    public String convertCelsiusFahrenheit(String input) {
+        if (!StringUtils.isNumeric(input)) {
+            return ENTER_NUMBER_INSTEAD;
+        }
 
+        return SUCCESSFULLY_CONVERTED_MESSAGE +
+                new BigDecimal(input).multiply(TEMP_CELSIUS_FAHRENHEIT_FACTOR).toString();
+    }
 
 }

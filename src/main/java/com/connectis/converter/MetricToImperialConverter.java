@@ -1,7 +1,5 @@
 package com.connectis.converter;
 
-import java.math.BigDecimal;
-
 public class MetricToImperialConverter extends Converter {
 
     private static final double LENGTH_METER_FOOT_FACTOR = 1.5;
