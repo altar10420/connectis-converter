@@ -114,7 +114,7 @@ public class UserInterface {
                     }
                     System.out.println("Enter weight in " + inputUnit);
                     userInput = readUserInput();
-                    System.out.println(converter.convertLiterGallon(userInput) + outputUnit);
+                    System.out.println(converter.convertKilogramPound(userInput) + outputUnit);
                     continue;
 
                 case "5" :
@@ -127,7 +127,7 @@ public class UserInterface {
                     }
                     System.out.println("Enter temperature in " + inputUnit);
                     userInput = readUserInput();
-                    System.out.println(converter.convertLiterGallon(userInput) + outputUnit);
+                    System.out.println(converter.convertCelsiusFahrenheit(userInput) + outputUnit);
                     continue;
 
                 case "0" :
