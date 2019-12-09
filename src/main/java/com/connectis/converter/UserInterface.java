@@ -125,6 +125,9 @@ public class UserInterface {
                         inputUnit = "[F]";
                         outputUnit = "[C]";
                     }
+                    System.out.println("Conversion in range of 1000K only:");
+                    System.out.println("Celsius in range -273,15 +726,85");
+                    System.out.println("Fahrenheit in range -459,67 +1340,33");
                     System.out.println("Enter temperature in " + inputUnit);
                     userInput = readUserInput();
                     System.out.println(converter.convertCelsiusFahrenheit(userInput) + outputUnit);

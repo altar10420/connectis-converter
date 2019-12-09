@@ -1,7 +1,5 @@
 package com.connectis.converter;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -22,8 +20,12 @@ public class ImperialToMetricConverter extends Converter {
 
     @Override
     public String convertCelsiusFahrenheit(String input) {
-        if (!StringUtils.isNumeric(input)) {
-            return ENTER_NUMBER_INSTEAD;
+        if (!this.isInputNumeric(input)) {
+            return WRONG_INPUT_LETTERS_OR_OUT_OF_RANGE;
+        }
+
+        if (Double.parseDouble(input)<-459.67 || Double.parseDouble(input)>1340.33) {
+            return WRONG_INPUT_LETTERS_OR_OUT_OF_RANGE;
         }
 
         BigDecimal inputValue, factor, substraction;
