@@ -28,13 +28,12 @@ package com.connectis.converter;
 - Stwórz merge request'a na merge gotowego kodu do brancha master
  */
 
-import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        UserInterface userInterface = new UserInterface();
-        userInterface.run();
+        MetricToImperialConverter metricToImperialConverter = new MetricToImperialConverter();
+
     }
 }
